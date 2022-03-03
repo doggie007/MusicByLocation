@@ -16,8 +16,13 @@ struct ContentView: View {
                 .foregroundColor(.blue)
                 .bold()
                 .font(.largeTitle)
-            Text(state.artistsByLocation)
-                .padding()
+//            Text(state.artistsByLocation)
+//                .padding()
+            List{
+                ForEach(state.artistsByLocation, id: \.self){name in
+                    Text(name)
+                }
+            }
             Spacer()
             Button("Find Music", action: {
                 state.findMusic()

@@ -10,7 +10,7 @@ import Foundation
 class StateController: ObservableObject{
     let locationHandler = LocationHandler()
     let iTunesAdaptor = ItunesAdaptor()
-    @Published var artistsByLocation: String = ""
+    @Published var artistsByLocation: [String] = []
     
     var lastKnownLocation: String = "" {
         didSet{
@@ -31,7 +31,8 @@ class StateController: ObservableObject{
             return $0.name
         }
         DispatchQueue.main.async{
-            self.artistsByLocation = names?.joined(separator: ", ") ?? "Error finding Artists from your location"
+//            self.artistsByLocation = names?.joined(separator: ", ") ?? "Error finding Artists from your location"
+            self.artistsByLocation = names ?? ["Error finding Artists from your location"]
         }
     }
     
