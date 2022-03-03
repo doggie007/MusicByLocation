@@ -11,12 +11,22 @@ struct ContentView: View {
     @StateObject private var state = StateController()
     var body: some View {
         VStack{
+            Image(uiImage: UIImage(named: "AppIcon") ?? UIImage())
+            Text("Music By Location")
+                .foregroundColor(.blue)
+                .bold()
+                .font(.largeTitle)
             Text(state.artistsByLocation)
                 .padding()
             Spacer()
             Button("Find Music", action: {
                 state.findMusic()
             })
+                .padding()
+                .background(Color(red: 0, green: 0, blue: 0.5))
+                .foregroundColor(.white)
+                .clipShape(Capsule())
+                .padding()
         }.onAppear(perform: {
             state.requestAccessToLocationData()
         })
